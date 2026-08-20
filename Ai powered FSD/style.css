@@ -1,0 +1,959 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    overflow-x: hidden;
+    color: #ffffff;
+}
+
+/* =========================================
+   GENERAL
+========================================= */
+
+.hidden {
+    display: none !important;
+}
+
+.screen {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 25px;
+    position: relative;
+    overflow: hidden;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+
+/* =========================================
+   FLOATING BACKGROUND HEARTS
+========================================= */
+
+.screen::before,
+.screen::after {
+    content: "❤";
+    position: absolute;
+    font-size: 180px;
+    opacity: 0.08;
+    animation: backgroundFloat 8s infinite ease-in-out;
+    pointer-events: none;
+}
+
+.screen::before {
+    left: -50px;
+    top: 10%;
+}
+
+.screen::after {
+    right: -50px;
+    bottom: 10%;
+    animation-delay: 3s;
+}
+
+@keyframes backgroundFloat {
+
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-40px) rotate(15deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+
+/* =========================================
+   PASSWORD SCREEN
+========================================= */
+
+#passwordScreen {
+    background:
+        radial-gradient(circle at 20% 20%, #ffea00 0%, transparent 18%),
+        radial-gradient(circle at 80% 20%, #ff00cc 0%, transparent 25%),
+        radial-gradient(circle at 20% 80%, #00eaff 0%, transparent 22%),
+        radial-gradient(circle at 80% 80%, #7b00ff 0%, transparent 25%),
+        linear-gradient(
+            135deg,
+            #ff006e,
+            #8338ec,
+            #3a86ff
+        );
+    animation: gradientMove 10s infinite alternate;
+}
+
+@keyframes gradientMove {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+/* =========================================
+   PASSWORD CARD
+========================================= */
+
+.password-box {
+    width: 100%;
+    max-width: 480px;
+    padding: 50px 35px;
+    border-radius: 35px;
+
+    background: rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(20px);
+
+    border: 2px solid rgba(255, 255, 255, 0.35);
+
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.35),
+        inset 0 0 30px rgba(255, 255, 255, 0.1);
+
+    animation: cardAppear 1.2s ease;
+}
+
+@keyframes cardAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(0.7) translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.heart {
+    font-size: 80px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 20px #ffb3d9);
+    animation: heartBeat 1.3s infinite;
+}
+
+@keyframes heartBeat {
+
+    0% {
+        transform: scale(1);
+    }
+
+    25% {
+        transform: scale(1.18);
+    }
+
+    40% {
+        transform: scale(1);
+    }
+
+    60% {
+        transform: scale(1.18);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.password-box h1 {
+    font-size: 32px;
+    margin-bottom: 15px;
+    text-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+}
+
+.password-box p {
+    font-size: 17px;
+    margin-bottom: 25px;
+}
+
+#passwordInput {
+    width: 100%;
+    padding: 17px 20px;
+
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    border-radius: 18px;
+
+    outline: none;
+
+    background: rgba(255, 255, 255, 0.9);
+    color: #7b1251;
+
+    font-size: 17px;
+    text-align: center;
+
+    margin-bottom: 18px;
+
+    transition: 0.3s;
+}
+
+#passwordInput:focus {
+    transform: scale(1.03);
+    box-shadow: 0 0 25px #ffffff;
+}
+
+#unlockButton {
+    width: 100%;
+    padding: 17px;
+
+    border-radius: 18px;
+
+    background: linear-gradient(
+        135deg,
+        #ff006e,
+        #ff4d9d,
+        #8338ec
+    );
+
+    color: white;
+
+    font-size: 17px;
+    font-weight: bold;
+
+    box-shadow:
+        0 10px 30px rgba(255, 0, 110, 0.5);
+
+    transition: 0.3s;
+}
+
+#unlockButton:hover {
+    transform: translateY(-4px) scale(1.03);
+
+    box-shadow:
+        0 15px 40px rgba(255, 0, 110, 0.7);
+}
+
+#passwordMessage {
+    color: #fff;
+    font-weight: bold;
+    margin-top: 18px;
+}
+
+
+/* =========================================
+   QUESTION SCREEN
+========================================= */
+
+#questionScreen {
+    background:
+        radial-gradient(circle at top left, #ffea00, transparent 20%),
+        radial-gradient(circle at top right, #ff00aa, transparent 25%),
+        radial-gradient(circle at bottom left, #00eaff, transparent 25%),
+        radial-gradient(circle at bottom right, #7c00ff, transparent 25%),
+        linear-gradient(
+            135deg,
+            #ff1493,
+            #8a2be2,
+            #0077ff
+        );
+}
+
+.question-box {
+    width: 100%;
+    max-width: 600px;
+
+    padding: 60px 35px;
+
+    border-radius: 40px;
+
+    background: rgba(255, 255, 255, 0.16);
+
+    backdrop-filter: blur(20px);
+
+    border: 2px solid rgba(255, 255, 255, 0.35);
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.3);
+
+    animation: cardAppear 1s ease;
+}
+
+.question-box h1 {
+    font-size: 55px;
+    margin-bottom: 15px;
+
+    text-shadow:
+        0 0 10px #fff,
+        0 0 30px #ff69b4;
+}
+
+.question-box p {
+    font-size: 20px;
+    margin-bottom: 35px;
+}
+
+.question-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+
+    min-height: 90px;
+
+    position: relative;
+}
+
+#yesButton,
+#noButton {
+    min-width: 140px;
+    padding: 16px 25px;
+
+    border-radius: 50px;
+
+    color: white;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    transition: 0.25s;
+}
+
+#yesButton {
+    background: linear-gradient(
+        135deg,
+        #00c853,
+        #00e676,
+        #64dd17
+    );
+
+    box-shadow:
+        0 10px 30px rgba(0, 255, 100, 0.45);
+}
+
+#yesButton:hover {
+    transform: scale(1.12);
+}
+
+#noButton {
+    background: linear-gradient(
+        135deg,
+        #ff1744,
+        #ff5252
+    );
+
+    box-shadow:
+        0 10px 30px rgba(255, 0, 0, 0.4);
+}
+
+
+/* =========================================
+   CELEBRATION SCREEN
+========================================= */
+
+#celebrationScreen {
+    background:
+        radial-gradient(circle at 50% 50%, #fff700, transparent 10%),
+        radial-gradient(circle at 20% 30%, #ff00aa, transparent 20%),
+        radial-gradient(circle at 80% 70%, #00eaff, transparent 20%),
+        linear-gradient(
+            135deg,
+            #ff006e,
+            #8338ec,
+            #3a86ff
+        );
+}
+
+.celebration {
+    position: relative;
+    z-index: 2;
+}
+
+.celebration h1 {
+    font-size: 70px;
+
+    text-shadow:
+        0 0 10px #fff,
+        0 0 30px #ffea00,
+        0 0 60px #ff00aa;
+
+    animation: celebrationPulse 1s infinite alternate;
+}
+
+.celebration p {
+    font-size: 22px;
+    margin-top: 20px;
+}
+
+.celebration-hearts {
+    font-size: 55px;
+    margin-top: 35px;
+
+    animation: floatingHearts 2s infinite;
+}
+
+@keyframes celebrationPulse {
+
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.08);
+    }
+}
+
+@keyframes floatingHearts {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-25px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+#fireworks {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+}
+
+
+/* =========================================
+   MAIN WEBSITE
+========================================= */
+
+#surpriseContent {
+    width: 100%;
+    background: #ffffff;
+}
+
+
+/* =========================================
+   COMMON SECTION
+========================================= */
+
+.content-section {
+    min-height: 100vh;
+
+    padding: 100px 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.content-section h2 {
+    font-size: 45px;
+    margin-bottom: 20px;
+
+    background: linear-gradient(
+        90deg,
+        #ff006e,
+        #8338ec,
+        #0077ff
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+}
+
+.content-section > p {
+    font-size: 19px;
+    margin-bottom: 30px;
+}
+
+
+/* =========================================
+   WELCOME SECTION
+========================================= */
+
+#welcomeSection {
+    background:
+        radial-gradient(circle at 10% 20%, #ffea00, transparent 15%),
+        radial-gradient(circle at 90% 20%, #ff00aa, transparent 20%),
+        radial-gradient(circle at 10% 90%, #00eaff, transparent 20%),
+        radial-gradient(circle at 90% 90%, #8338ec, transparent 20%),
+        linear-gradient(
+            135deg,
+            #fff0f7,
+            #f5e9ff,
+            #e8f7ff
+        );
+
+    color: #5b1745;
+}
+
+.welcome {
+    max-width: 850px;
+
+    padding: 50px;
+
+    border-radius: 40px;
+
+    background: rgba(255, 255, 255, 0.6);
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 25px 70px rgba(100, 0, 100, 0.15);
+
+    animation: fadeUp 1.5s ease;
+}
+
+.small-text {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.welcome h1 {
+    font-size: 65px;
+
+    background: linear-gradient(
+        90deg,
+        #ff006e,
+        #8338ec,
+        #0077ff
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    margin-bottom: 25px;
+}
+
+.welcome p {
+    font-size: 22px;
+}
+
+
+/* =========================================
+   PHOTO SECTION
+========================================= */
+
+#photoSection {
+    background:
+        radial-gradient(circle at 20% 20%, #ffb3d9, transparent 25%),
+        radial-gradient(circle at 80% 80%, #a5f3fc, transparent 25%),
+        linear-gradient(
+            135deg,
+            #ffe4f0,
+            #e9ddff,
+            #dcfaff
+        );
+
+    color: #531d45;
+}
+
+.photo-container {
+    width: 90%;
+    max-width: 650px;
+
+    padding: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff006e,
+            #8338ec,
+            #00bfff
+        );
+
+    border-radius: 30px;
+
+    box-shadow:
+        0 25px 60px rgba(80, 0, 100, 0.25);
+
+    animation: photoFloat 4s infinite ease-in-out;
+}
+
+@keyframes photoFloat {
+
+    0% {
+        transform: translateY(0) rotate(-1deg);
+    }
+
+    50% {
+        transform: translateY(-12px) rotate(1deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(-1deg);
+    }
+}
+
+.photo-container img {
+    width: 100%;
+    max-height: 650px;
+
+    object-fit: cover;
+
+    display: block;
+
+    border-radius: 20px;
+
+    transition:
+        opacity 0.8s,
+        transform 0.8s;
+
+    border: 5px solid white;
+}
+
+#photoCaption {
+    margin-top: 25px;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    color: #8e245f;
+}
+
+
+/* =========================================
+   LOVE LETTER
+========================================= */
+
+#letterSection {
+    background:
+        radial-gradient(circle at 10% 10%, #ffea00, transparent 18%),
+        radial-gradient(circle at 90% 90%, #ff9de2, transparent 25%),
+        linear-gradient(
+            135deg,
+            #fff3f8,
+            #ffe2ee
+        );
+
+    color: #54203f;
+}
+
+.letter-box {
+    width: 90%;
+    max-width: 800px;
+
+    padding: 55px 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fffdf4,
+            #fff5fa
+        );
+
+    border-radius: 25px;
+
+    border: 5px solid transparent;
+
+    background-clip: padding-box;
+
+    box-shadow:
+        0 25px 70px rgba(130, 0, 80, 0.2);
+
+    position: relative;
+}
+
+.letter-box::before {
+    content: "💌";
+
+    position: absolute;
+
+    top: -35px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    font-size: 55px;
+
+    filter:
+        drop-shadow(0 5px 10px rgba(0,0,0,0.2));
+}
+
+#loveLetter {
+    font-family: Georgia, serif;
+
+    font-size: 21px;
+
+    line-height: 2;
+
+    color: #6a214d;
+
+    white-space: pre-line;
+}
+
+
+/* =========================================
+   POEM SECTION
+========================================= */
+
+#poemSection {
+    background:
+        radial-gradient(circle at 20% 80%, #ff9de2, transparent 25%),
+        radial-gradient(circle at 80% 20%, #a8f0ff, transparent 25%),
+        linear-gradient(
+            135deg,
+            #ffe9f5,
+            #e7dcff,
+            #dffaff
+        );
+
+    color: #552343;
+}
+
+.poem-box {
+    width: 90%;
+    max-width: 700px;
+
+    padding: 50px;
+
+    background: rgba(255, 255, 255, 0.75);
+
+    backdrop-filter: blur(15px);
+
+    border-radius: 35px;
+
+    box-shadow:
+        0 25px 70px rgba(80, 0, 100, 0.18);
+
+    position: relative;
+}
+
+.poem-box::before {
+    content: "🌹";
+
+    position: absolute;
+
+    top: -35px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    font-size: 55px;
+}
+
+#poem {
+    font-family: Georgia, serif;
+
+    font-size: 23px;
+
+    line-height: 2;
+
+    color: #70245a;
+}
+
+
+/* =========================================
+   FINAL SURPRISE
+========================================= */
+
+#finalSection {
+    background:
+        radial-gradient(circle at center, #ffea00, transparent 10%),
+        radial-gradient(circle at 20% 30%, #ff00aa, transparent 20%),
+        radial-gradient(circle at 80% 70%, #00eaff, transparent 20%),
+        linear-gradient(
+            135deg,
+            #ff006e,
+            #8338ec,
+            #3a86ff
+        );
+
+    color: white;
+}
+
+.final-surprise {
+    max-width: 850px;
+
+    padding: 60px 30px;
+
+    animation: finalAppear 2s ease;
+}
+
+@keyframes finalAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.big-heart {
+    font-size: 150px;
+
+    filter:
+        drop-shadow(0 0 25px #ffea00)
+        drop-shadow(0 0 50px #ff00aa);
+
+    animation: heartBeat 1.2s infinite;
+}
+
+.final-surprise h1 {
+    font-size: 65px;
+
+    margin: 20px 0;
+
+    text-shadow:
+        0 0 10px white,
+        0 0 30px #ffea00;
+}
+
+.final-surprise h2 {
+    font-size: 40px;
+
+    margin-bottom: 30px;
+
+    color: #fff700;
+}
+
+.final-surprise p {
+    font-size: 21px;
+
+    line-height: 1.8;
+}
+
+.final-message {
+    font-size: 30px !important;
+
+    font-weight: bold;
+
+    margin-top: 35px;
+
+    animation: celebrationPulse 1.5s infinite alternate;
+}
+
+
+/* =========================================
+   FADE ANIMATION
+========================================= */
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(60px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .password-box {
+        padding: 40px 22px;
+    }
+
+    .heart {
+        font-size: 65px;
+    }
+
+    .password-box h1 {
+        font-size: 26px;
+    }
+
+    .question-box {
+        padding: 45px 20px;
+    }
+
+    .question-box h1 {
+        font-size: 38px;
+    }
+
+    .question-buttons {
+        gap: 12px;
+    }
+
+    #yesButton,
+    #noButton {
+        min-width: 115px;
+        padding: 14px 18px;
+        font-size: 15px;
+    }
+
+    .celebration h1 {
+        font-size: 45px;
+    }
+
+    .celebration p {
+        font-size: 18px;
+    }
+
+    .celebration-hearts {
+        font-size: 40px;
+    }
+
+    .content-section {
+        padding: 80px 15px;
+    }
+
+    .welcome {
+        padding: 35px 20px;
+    }
+
+    .welcome h1 {
+        font-size: 42px;
+    }
+
+    .welcome p {
+        font-size: 18px;
+    }
+
+    .content-section h2 {
+        font-size: 32px;
+    }
+
+    .letter-box {
+        padding: 45px 22px;
+    }
+
+    #loveLetter {
+        font-size: 17px;
+        line-height: 1;
+    }

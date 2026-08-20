@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A Special Surprise ❤️</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ============================= -->
+    <!-- PASSWORD SCREEN -->
+    <!-- ============================= -->
+
+    <section id="passwordScreen" class="screen">
+
+        <div class="password-box">
+
+            <div class="heart">❤️</div>
+
+            <h1>Someone prepared a surprise for you</h1>
+
+            <p>Enter the secret password to continue...</p>
+
+            <input
+                type="password"
+                id="passwordInput"
+                placeholder="Enter password"
+            >
+
+            <button id="unlockButton">
+                Unlock My Surprise ❤️
+            </button>
+
+            <p id="passwordMessage"></p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- LOVE QUESTION -->
+    <!-- ============================= -->
+
+    <section id="questionScreen" class="screen hidden">
+
+        <div class="question-box">
+
+            <div class="heart">💕</div>
+
+            <h1>Do you love me?</h1>
+
+            <p>Be honest... 😏</p>
+
+            <div class="question-buttons">
+
+                <button id="yesButton">
+                    YES ❤️
+                </button>
+
+                <button id="noButton">
+                    NO 😏
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- CELEBRATION -->
+    <!-- ============================= -->
+
+    <section id="celebrationScreen" class="screen hidden">
+
+        <div class="celebration">
+
+            <div id="fireworks"></div>
+
+            <h1>I KNEW IT! ❤️</h1>
+
+            <p>
+                You just made this moment even more special! 🥰
+            </p>
+
+            <div class="celebration-hearts">
+                ❤️ 💕 ❤️ 💕 ❤️
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- MAIN SURPRISE -->
+    <!-- ============================= -->
+
+    <main id="surpriseContent" class="hidden">
+
+
+        <!-- ============================= -->
+        <!-- WELCOME -->
+        <!-- ============================= -->
+
+        <section id="welcomeSection" class="content-section">
+
+            <div class="welcome">
+
+                <p class="small-text">
+                    A little surprise made especially for you...
+                </p>
+
+                <h1>
+                    Hello, <span id="recipientName">Samantha</span> ❤️
+                </h1>
+
+                <p>
+                    There is something special waiting for you.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============================= -->
+        <!-- PHOTO SECTION -->
+        <!-- ============================= -->
+
+        <section id="photoSection" class="content-section">
+
+            <h2>Our Beautiful Memories 📸</h2>
+
+            <p>
+                Every picture holds a special memory...
+            </p>
+
+            <div class="photo-container">
+
+                <img
+                    id="memoryPhoto"
+                    src="images/2202449.jpg"
+                    alt="Our memory"
+                >
+
+            </div>
+            </section>
+
+            <p id="photoCaption">
+                A beautiful moment ❤️
+            </p>
+
+        </section>
+
+
+        <!-- ============================= -->
+        <!-- LOVE LETTER -->
+        <!-- ============================= -->
+
+        <section id="letterSection" class="content-section">
+
+            <h2>A Letter From My Heart 💌</h2>
+
+            <div class="letter-box">
+
+                <p id="loveLetter">
+
+                    My dear love,
+
+                    From the moment you came into my life,
+                    everything became a little more beautiful.
+
+                    You have given me so many wonderful memories,
+                    so many reasons to smile and so many moments
+                    that I will always treasure.
+
+                    Thank you for being you.
+
+                    I love you more than words can explain. ❤️
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============================= -->
+        <!-- POEM -->
+        <!-- ============================= -->
+
+        <section id="poemSection" class="content-section">
+
+            <h2>A Little Poem For You 🌹</h2>
+
+            <div class="poem-box">
+
+                <p id="poem">
+
+                    You are the smile in my day,<br>
+                    The light that guides my way.<br>
+                    In every moment, near or far,<br>
+                    You will always be my favorite star. ✨<br><br>
+
+                    Through every laugh and every tear,<br>
+                    I'll always want you near.<br>
+                    No matter where life takes us to,<br>
+                    My heart will always choose you. ❤️
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============================= -->
+        <!-- FINAL SURPRISE -->
+        <!-- ============================= -->
+
+        <section id="finalSection" class="content-section">
+
+            <div class="final-surprise">
+
+                <div class="big-heart">
+                    ❤️
+                </div>
+
+                <h1>
+                    Vijay ❤️ Samantha
+                </h1>
+
+                <h2>
+                    Forever & Always
+                </h2>
+
+                <p>
+                    And if you ever forget how special you are,
+                    come back here and remember...
+                </p>
+
+                <p class="final-message">
+                    You mean the world to me. ❤️
+                </p>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- ============================= -->
+    <!-- BACKGROUND MUSIC -->
+    <!-- ============================= -->
+
+    <audio id="backgroundMusic" loop>
+
+        <source
+            src="Audio/selfie_pulla_remix (1).mp3"
+            type="audio/mpeg"
+        >
+
+    </audio>
+
+
+    <!-- ============================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ============================= -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
